@@ -165,5 +165,8 @@ public class Usuario {
         this.acuerdosAceptados = acuerdosAceptados;
     }
 
-    
+    @Override
+    public String toString(){
+        return "Usuario: Este es el usuario " + id + ", " + nombre + " " + primerApellido + " " + segundoApellido + ". Telefono: " + telefono + ". Correo: " + email + ".";
+    }
 }

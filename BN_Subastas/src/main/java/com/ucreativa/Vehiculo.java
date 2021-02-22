@@ -45,4 +45,9 @@ public class Vehiculo extends Bien{
     public void setEstado(String estado) {
         this.estado = estado;
     }
+    
+    @Override
+    public String toString(){
+        return "Vehiculo: Este es el vehiculo " + super.getId() + ", annio " + annio + ". Su estado es " + estado + ".";
+    }
 }

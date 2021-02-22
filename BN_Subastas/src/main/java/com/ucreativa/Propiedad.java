@@ -132,4 +132,9 @@ public class Propiedad extends Bien{
     public void setEstado(String estado) {
         this.estado = estado;
     }
+    
+    @Override
+    public String toString(){
+        return "Propiedad: Esta es la propiedad " + super.getId() + ", ubicada en " + provincia + ", " + canton + ", " + distrito + " y tiene un tamannio de " + tamanno + ". Estado actual: " + estado + ".";
+    }
 }

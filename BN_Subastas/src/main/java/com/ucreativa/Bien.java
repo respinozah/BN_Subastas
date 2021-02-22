@@ -31,4 +31,9 @@ public abstract class Bien {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
+    
+    @Override
+    public String toString(){
+        return "Bien: Este es el Bien " + id + "que tiene un precio de " + precio + ".";
+    }
 }
