@@ -45,6 +45,28 @@ public class Usuario {
         this.acuerdosAceptados = acuerdosAceptados;
     }
 
+    public Usuario(){
+        
+    }
+    
+    public boolean authenticar(String email, String contrasenna){
+        if(getEmail().equals(email) && getContrasenna().equals(contrasenna)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
+    public boolean esAdmin(){
+        if(getNombre().equals("admin")){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
     public String getId() {
         return id;
     }
