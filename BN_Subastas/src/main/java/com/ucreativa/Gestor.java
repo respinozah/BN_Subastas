@@ -1,16 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.ucreativa;
 
 import static com.ucreativa.Repo.BienRepo.propiedades;
 import static com.ucreativa.Repo.BienRepo.vehiculos;
 
 /**
- *
- * @author espiraul
+ * Esta es la clase que actua como interfase entre la logica del sistema de subastas y los formularios de la presentacion.
+ * 
+ * @author Gabriel Ruiz
+ * @author Raul Espinoza
+ * @author Francisco Cambronero
  */
 public class Gestor {
     
@@ -95,26 +93,14 @@ public class Gestor {
         return description;
     }
     
-    public String getIDPorToString(String toString){
+    public String getIDPorDescripcion(String toString){
         return toString.substring(toString.length()-4, toString.length());
     }
 
     void registrarPuja(String usuarioId, String propiedadID, boolean acuerdosFirmados, boolean asistenciaColaborador, boolean sennialTratoDepositada, Double montoSennialTrato) {
         Puja puja = new Puja(usuarioId, propiedadID, acuerdosFirmados, asistenciaColaborador,  sennialTratoDepositada, montoSennialTrato);
         
-        for(int i = 0; i < Repo.SubastaRepo.subastasPropiedades.size(); i++){
-            if(Repo.SubastaRepo.subastasPropiedades.get(i).getBienSubastado().getId().equals(propiedadID)){
-                Repo.SubastaRepo.subastasPropiedades.get(i).recibirPuja(puja);
-                break;
-            }
-        }
-        
-        for(int i = 0; i < Repo.SubastaRepo.subastasVehiculos.size(); i++){
-            if(Repo.SubastaRepo.subastasVehiculos.get(i).getBienSubastado().getId().equals(propiedadID)){
-                Repo.SubastaRepo.subastasVehiculos.get(i).recibirPuja(puja);
-                break;
-            }
-        }
+        puja.registrarPuja();
     }
 
     public String[] getPropiedades() {
@@ -137,6 +123,8 @@ public class Gestor {
         contador++;
         Propiedad propiedad = new Propiedad(provincia, canton, distrito, descuento, tipoVenta, tamannio, estaEnCosta, true, aceptaOfertas, destacado, estado, ("PRP"+contador), precio);
         propiedad.registrar();
+        SubastaPropiedad nuevaSubasta = new SubastaPropiedad(propiedad);
+        nuevaSubasta.subastar();
     }
 
     void registrarVehiculo(int annio, String tipoVenta, String estado, Double precio) {
@@ -144,5 +132,7 @@ public class Gestor {
         contador++;
         Vehiculo vehiculo = new Vehiculo(annio, tipoVenta, estado, ("VCL"+contador), precio);
         vehiculo.registrar();
+        SubastaVehiculo nuevaSubasta = new SubastaVehiculo(vehiculo);
+        nuevaSubasta.subastar();
     }
 }

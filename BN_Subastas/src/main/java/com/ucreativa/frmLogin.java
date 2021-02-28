@@ -1,23 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.ucreativa;
 
 import javax.swing.JOptionPane;
 
-
 /**
- *
- * @author espiraul
+ * Esta es la clase que implementa el formulario login o autenticacion de los usuarios. De ese modo se determina el workflow y funcionalidad.
+ * 
+ * @author Gabriel Ruiz
+ * @author Raul Espinoza
+ * @author Francisco Cambronero
  */
 public class frmLogin extends javax.swing.JFrame {
 
     Gestor gestor = Repo.UsersRepo.gestor;
-    /**
-     * Creates new form frmLogin
-     */
+
     public frmLogin() {
         initComponents();
     }

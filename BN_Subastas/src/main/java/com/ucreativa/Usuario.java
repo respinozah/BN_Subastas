@@ -1,13 +1,13 @@
-/*
- *
- */
 package com.ucreativa;
 
 import java.util.List;
 
 /**
- *
+ * Esta es la clase que implementa los usuarios del sistema, clientes y administradores.
+ * 
+ * @author Gabriel Ruiz
  * @author Raul Espinoza
+ * @author Francisco Cambronero
  */
 public class Usuario {
     private String id;

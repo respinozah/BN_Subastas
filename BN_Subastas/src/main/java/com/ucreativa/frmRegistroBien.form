@@ -264,13 +264,11 @@
                           <Component id="chkDestacado" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="cmbEstado" alignment="0" pref="137" max="32767" attributes="0"/>
                           <Component id="txtPrecio" alignment="0" max="32767" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="txtProvincia" alignment="0" max="32767" attributes="0"/>
-                              <Component id="cmbTipoVenta" alignment="0" pref="134" max="32767" attributes="0"/>
-                              <Component id="txtTamannio" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtCanton" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtDistrito" alignment="0" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="txtProvincia" alignment="0" max="32767" attributes="0"/>
+                          <Component id="cmbTipoVenta" alignment="0" pref="134" max="32767" attributes="0"/>
+                          <Component id="txtTamannio" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtCanton" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtDistrito" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="101" max="32767" attributes="0"/>
                   </Group>

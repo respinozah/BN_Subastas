@@ -1,22 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.ucreativa;
 
 import javax.swing.DefaultComboBoxModel;
 
 /**
- *
- * @author espiraul
+ * Esta es la clase que implementa el formulario del home de los usuarios administradores.
+ * 
+ * @author Gabriel Ruiz
+ * @author Raul Espinoza
+ * @author Francisco Cambronero
  */
 public class frmHomeAdmin extends javax.swing.JFrame {
 
     private Gestor gestor = Repo.UsersRepo.gestor;
-    /**
-     * Creates new form frmHomeAdmin
-     */
+
     public frmHomeAdmin() {
         initComponents();
         
@@ -121,11 +117,11 @@ public class frmHomeAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_cmdRegistrarBienActionPerformed
 
     private void lstPropiedadesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstPropiedadesMouseClicked
-        cargarLIstas();
+        //cargarLIstas();
     }//GEN-LAST:event_lstPropiedadesMouseClicked
 
     private void lstVehiculosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstVehiculosMouseClicked
-        cargarLIstas();
+        //cargarLIstas();
     }//GEN-LAST:event_lstVehiculosMouseClicked
 
     /**

@@ -1,13 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.ucreativa;
 import java.util.Random;
+
 /**
- *
- * @author espiraul
+ * Esta es la clase que define la puja que se hacen a los bienes subastados en el sistema de subastas.
+ * 
+ * @author Gabriel Ruiz
+ * @author Raul Espinoza
+ * @author Francisco Cambronero
  */
 public class Puja {
     private String usuario;
@@ -26,6 +25,22 @@ public class Puja {
         this.sennialTratoDepositada = sennialTratoDepositada;
         this.montoSennialTrato = montoSennialTrato;
         this.codigoPuja = new Random().nextInt();
+    }
+    
+    public void registrarPuja(){
+        for(int i = 0; i < Repo.SubastaRepo.subastasPropiedades.size(); i++){
+            if(Repo.SubastaRepo.subastasPropiedades.get(i).getBienSubastado().getId().equals(bienSubastado)){
+                Repo.SubastaRepo.subastasPropiedades.get(i).recibirPuja(this);
+                break;
+            }
+        }
+        
+        for(int i = 0; i < Repo.SubastaRepo.subastasVehiculos.size(); i++){
+            if(Repo.SubastaRepo.subastasVehiculos.get(i).getBienSubastado().getId().equals(bienSubastado)){
+                Repo.SubastaRepo.subastasVehiculos.get(i).recibirPuja(this);
+                break;
+            }
+        }
     }
     
     @Override
@@ -87,7 +102,5 @@ public class Puja {
 
     public void setMontoSennialTrato(double montoSennialTrato) {
         this.montoSennialTrato = montoSennialTrato;
-    }
-    
-    
+    }  
 }

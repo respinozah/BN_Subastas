@@ -1,16 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.ucreativa;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Esta es la clase que implementa las subastas de propiedades.
+ * 
+ * @author Gabriel Ruiz
  * @author Raul Espinoza
+ * @author Francisco Cambronero
  */
 public class SubastaPropiedad implements Subasta{
     
@@ -20,6 +18,10 @@ public class SubastaPropiedad implements Subasta{
     public SubastaPropiedad(Propiedad bienSubastado){
         this.bienSubastado = bienSubastado;
         listaDePujas = new ArrayList<>();
+    }
+    
+    public void subastar(){
+        Repo.SubastaRepo.subastasPropiedades.add(this);
     }
     
     public void recibirPuja(Puja puja){

@@ -1,11 +1,11 @@
-/*
- *
- */
 package com.ucreativa;
 
 /**
- *
+ * Esta es la clase que define la propiedad (un bien inmueble) en el sistema de subastas.
+ * 
+ * @author Gabriel Ruiz
  * @author Raul Espinoza
+ * @author Francisco Cambronero
  */
 public class Propiedad extends Bien{
     
