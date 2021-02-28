@@ -45,10 +45,6 @@ public class frmLogin extends javax.swing.JFrame {
 
         jLabel2.setText("Contraseña:");
 
-        txtUsuario.setText("admin@subastasmail.com");
-
-        txtContrasenna.setText("123456");
-
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
