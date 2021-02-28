@@ -38,7 +38,7 @@ public class Propiedad extends Bien{
 
     public boolean registrar(){
         try{
-            //Guardar propiedad
+            Repo.BienRepo.propiedades.add(this);
             return true;
         }catch(Exception e){
             return false;

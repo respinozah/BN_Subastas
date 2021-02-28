@@ -116,4 +116,33 @@ public class Gestor {
             }
         }
     }
+
+    public String[] getPropiedades() {
+        String[] resultados = new String[Repo.BienRepo.propiedades.size()];      
+        for(int i = 0; i < Repo.BienRepo.propiedades.size(); i++){
+            resultados[i] = Repo.BienRepo.propiedades.get(i).toString();
+        }
+        return resultados;
+    }
+    public String[] getVehiculos() {
+        String[] resultados = new String[Repo.BienRepo.vehiculos.size()];      
+        for(int i = 0; i < Repo.BienRepo.vehiculos.size(); i++){
+            resultados[i] = Repo.BienRepo.vehiculos.get(i).toString();
+        }
+        return resultados;
+    }
+
+    public void registrarPropiedad(String provincia, String canton, String distrito, String tipoVenta, double tamannio, boolean estaEnCosta, boolean aceptaOfertas, boolean destacado, String estado, double precio, double descuento) {
+        int contador = Repo.BienRepo.propiedades.size();
+        contador++;
+        Propiedad propiedad = new Propiedad(provincia, canton, distrito, descuento, tipoVenta, tamannio, estaEnCosta, true, aceptaOfertas, destacado, estado, ("PRP"+contador), precio);
+        propiedad.registrar();
+    }
+
+    void registrarVehiculo(int annio, String tipoVenta, String estado, Double precio) {
+        int contador = Repo.BienRepo.vehiculos.size();
+        contador++;
+        Vehiculo vehiculo = new Vehiculo(annio, tipoVenta, estado, ("VCL"+contador), precio);
+        vehiculo.registrar();
+    }
 }

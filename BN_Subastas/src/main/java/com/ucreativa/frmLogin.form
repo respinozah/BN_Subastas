@@ -90,7 +90,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtUsuario">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jperez@mail.com"/>
+        <Property name="text" type="java.lang.String" value="admin@subastasmail.com"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JPasswordField" name="txtContrasenna">

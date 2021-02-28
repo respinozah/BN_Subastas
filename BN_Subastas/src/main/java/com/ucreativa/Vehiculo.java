@@ -24,7 +24,7 @@ public class Vehiculo extends Bien{
 
     public boolean registrar(){
         try{
-            //Guardar vehiculo
+            Repo.BienRepo.vehiculos.add(this);
             return true;
         }
         catch(Exception e){

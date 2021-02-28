@@ -45,7 +45,7 @@ public class frmLogin extends javax.swing.JFrame {
 
         jLabel2.setText("Contraseña:");
 
-        txtUsuario.setText("jperez@mail.com");
+        txtUsuario.setText("admin@subastasmail.com");
 
         txtContrasenna.setText("123456");
 
@@ -121,14 +121,17 @@ public class frmLogin extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         if(gestor.login(txtUsuario.getText(), txtContrasenna.getText())){
+            Repo.UsersRepo.gestor = this.gestor;
             if(gestor.esAdmin()){
                 //Abro el form de admin
+                frmHomeAdmin homeAdmin = new frmHomeAdmin();
+                homeAdmin.setVisible(true);
+                this.setVisible(false);
             }else{
                 //Abro el form de usuario
                 frmHomeUsuario homeUsuario = new frmHomeUsuario();
                 homeUsuario.setVisible(true);
                 this.setVisible(false);
-                Repo.UsersRepo.gestor = this.gestor;
             }
         }
         else{
