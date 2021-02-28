@@ -11,6 +11,9 @@ public abstract class Bien {
     private String id;
     private double precio;
 
+    public Bien(){
+    }
+    
     public Bien(String id, double precio) {
         this.id = id;
         this.precio = precio;

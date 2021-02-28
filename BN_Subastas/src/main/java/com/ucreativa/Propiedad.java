@@ -135,6 +135,6 @@ public class Propiedad extends Bien{
     
     @Override
     public String toString(){
-        return "Propiedad: Esta es la propiedad " + super.getId() + ", ubicada en " + provincia + ", " + canton + ", " + distrito + " y tiene un tamannio de " + tamanno + ". Estado actual: " + estado + ".";
+        return "Propiedad: Esta es la propiedad " + super.getId() + ", ubicada en " + provincia + ", " + canton + ", " + distrito + " y tiene un tamannio de " + tamanno + ". Estado actual: " + estado + "." + getId();
     }
 }

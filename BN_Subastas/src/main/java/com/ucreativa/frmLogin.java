@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class frmLogin extends javax.swing.JFrame {
 
+    Gestor gestor = Repo.UsersRepo.gestor;
     /**
      * Creates new form frmLogin
      */
@@ -119,15 +120,15 @@ public class frmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        // TODO add your handling code here:
-        if(Repo.UsersRepo.login(txtUsuario.getText(), txtContrasenna.getText())){
-            if(Repo.UsersRepo.usuarioAuthenticado.esAdmin()){
+        if(gestor.login(txtUsuario.getText(), txtContrasenna.getText())){
+            if(gestor.esAdmin()){
                 //Abro el form de admin
             }else{
                 //Abro el form de usuario
                 frmHomeUsuario homeUsuario = new frmHomeUsuario();
                 homeUsuario.setVisible(true);
                 this.setVisible(false);
+                Repo.UsersRepo.gestor = this.gestor;
             }
         }
         else{

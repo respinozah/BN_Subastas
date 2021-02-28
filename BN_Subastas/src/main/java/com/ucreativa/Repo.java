@@ -16,33 +16,13 @@ public class Repo {
     
     static class UsersRepo{
         
+        static Gestor gestor = new Gestor();
         static List<Usuario> usuarios = new ArrayList<>();
-        static Usuario usuarioAuthenticado = new Usuario();
         
         static void cargarUsuarios(){
             usuarios.clear();
             usuarios.add(new Usuario("001", "Juan", "Perez", "Pereira", "Cedula", "1 1122 3344", "2212 3345", "jperez@mail.com", "Heredia", "Belen", "San Antonio", "123456", true, true, true));
             usuarios.add(new Usuario("admin-01", "admin", "Sharon", "Garcia", "Cedula", "3 2244 3355", "2245 3322", "admin@subastasmail.com", "San Jose", "San Jose", "La Uruca", "123456", true, true, true));
-        }
-        
-        static boolean login(String email, String contrasenna){
-            boolean result = false;
-            try{
-                for(int i = 0; i < usuarios.size(); i++){
-                    if(usuarios.get(i).authenticar(email, contrasenna)){
-                        usuarioAuthenticado = usuarios.get(i);
-                        result = true;
-                        break;
-                    }
-                    else{
-                        usuarioAuthenticado = new Usuario();
-                        result = false;
-                    }
-                }
-                return result;
-            }catch(Exception e){
-                return false;
-            }
         }
     }
     
@@ -60,29 +40,28 @@ public class Repo {
         
         static void cargarVehiculos(){
             vehiculos.clear();
-            vehiculos.add(new Vehiculo(2000, "Disponible", "VCL1", 6000000.0));
-            vehiculos.add(new Vehiculo(2005, "Disponible", "VCL2", 8320000.0));
-            vehiculos.add(new Vehiculo(2021, "Disponible", "VCL3", 15100000.0));
+            vehiculos.add(new Vehiculo(2000, "Subasta", "Disponible", "VCL1", 6000000.0));
+            vehiculos.add(new Vehiculo(2005, "Subasta", "Disponible", "VCL2", 8320000.0));
+            vehiculos.add(new Vehiculo(2021, "Subasta", "Disponible", "VCL3", 15100000.0));
+        }
+
+    }
+    
+    static class SubastaRepo{
+        
+        static List<SubastaPropiedad> subastasPropiedades = new ArrayList<>();
+        static List<SubastaVehiculo> subastasVehiculos = new ArrayList<>();
+        
+        static void cargarSubastasPropiedades(){
+            for(int i = 0; i < Repo.BienRepo.propiedades.size(); i++){
+                subastasPropiedades.add(new SubastaPropiedad((Propiedad)Repo.BienRepo.propiedades.get(i)));
+            }
         }
         
-        static String[] resultadosBusquedaPropiedades(String provincia){
-            String[] resultados = new String[propiedades.size()];
-            for(int i = 0; i < propiedades.size(); i++){
-                if(propiedades.get(i).getProvincia().equals(provincia)){
-                    resultados[i] = propiedades.get(i).toString();
-                }
+        static void cargarSubastasVehiculos(){
+            for(int i = 0; i < Repo.BienRepo.vehiculos.size(); i++){
+                subastasVehiculos.add(new SubastaVehiculo(Repo.BienRepo.vehiculos.get(i)));
             }
-            return resultados;
-        }
-        
-        static String[] resultadosBusquedaVehiculos(String provincia){
-            String[] resultados = new String[vehiculos.size()];
-            for(int i = 0; i < vehiculos.size(); i++){
-                if(propiedades.get(i).getProvincia().equals(provincia)){
-                    resultados[i] = vehiculos.get(i).toString();
-                }
-            }
-            return resultados;
         }
     }
 }

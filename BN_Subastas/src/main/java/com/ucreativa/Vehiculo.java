@@ -12,10 +12,12 @@ package com.ucreativa;
 public class Vehiculo extends Bien{
     
     private int annio;
+    private String tipoVenta;
     private String estado;
 
-    public Vehiculo(int annio, String estado, String id, double precio) {
+    public Vehiculo(int annio, String tipoVenta, String estado, String id, double precio) {
         super(id, precio);
+        this.tipoVenta = tipoVenta;
         this.annio = annio;
         this.estado = estado;
     }
@@ -38,6 +40,14 @@ public class Vehiculo extends Bien{
         this.annio = annio;
     }
 
+    public String getTipoVenta() {
+        return tipoVenta;
+    }
+
+    public void setTipoVenta(String tipoVenta) {
+        this.tipoVenta = tipoVenta;
+    }
+   
     public String getEstado() {
         return estado;
     }
@@ -48,6 +58,6 @@ public class Vehiculo extends Bien{
     
     @Override
     public String toString(){
-        return "Vehiculo: Este es el vehiculo " + super.getId() + ", annio " + annio + ". Su estado es " + estado + ".";
+        return "Vehiculo: Este es el vehiculo " + super.getId() + ", annio " + annio + ". El tipo de venta es " + tipoVenta + " y su estado es " + estado + "." + getId();
     }
 }
