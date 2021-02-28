@@ -44,7 +44,6 @@ public class Repo {
             vehiculos.add(new Vehiculo(2005, "Subasta", "Disponible", "VCL2", 8320000.0));
             vehiculos.add(new Vehiculo(2021, "Subasta", "Disponible", "VCL3", 15100000.0));
         }
-
     }
     
     static class SubastaRepo{

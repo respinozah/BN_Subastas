@@ -15,6 +15,7 @@ import static com.ucreativa.Repo.BienRepo.vehiculos;
 public class Gestor {
     
     private Usuario usuarioAuthenticado = new Usuario();
+    public String propiedadID;
     
     public Gestor() {
         
@@ -36,10 +37,14 @@ public class Gestor {
         return result;
     }
 
-    boolean esAdmin() {
+    public boolean esAdmin() {
         return usuarioAuthenticado.esAdmin();
     }
 
+    public String getUsuarioId(){
+        return usuarioAuthenticado.getId();
+    }
+            
     public String getNombreCompletoUsuario() {
         return usuarioAuthenticado.getNombre() + " " + usuarioAuthenticado.getPrimerApellido() + " " + usuarioAuthenticado.getSegundoApellido();
     }
@@ -71,5 +76,44 @@ public class Gestor {
             }
         }
         return resultados;
+    }
+    
+    public String getDescripcionPropiedadPorID(String id){
+        String description = "";
+        for(int i = 0; i < Repo.BienRepo.propiedades.size(); i++){
+            if(Repo.BienRepo.propiedades.get(i).getId().equals(id)){
+                description = Repo.BienRepo.propiedades.get(i).toString();
+                break;
+            }
+        }
+        for(int i = 0; i < Repo.BienRepo.vehiculos.size(); i++){
+            if(Repo.BienRepo.vehiculos.get(i).getId().equals(id)){
+                description = Repo.BienRepo.vehiculos.get(i).toString();
+                break;
+            }
+        }
+        return description;
+    }
+    
+    public String getIDPorToString(String toString){
+        return toString.substring(toString.length()-4, toString.length());
+    }
+
+    void registrarPuja(String usuarioId, String propiedadID, boolean acuerdosFirmados, boolean asistenciaColaborador, boolean sennialTratoDepositada, Double montoSennialTrato) {
+        Puja puja = new Puja(usuarioId, propiedadID, acuerdosFirmados, asistenciaColaborador,  sennialTratoDepositada, montoSennialTrato);
+        
+        for(int i = 0; i < Repo.SubastaRepo.subastasPropiedades.size(); i++){
+            if(Repo.SubastaRepo.subastasPropiedades.get(i).getBienSubastado().getId().equals(propiedadID)){
+                Repo.SubastaRepo.subastasPropiedades.get(i).recibirPuja(puja);
+                break;
+            }
+        }
+        
+        for(int i = 0; i < Repo.SubastaRepo.subastasVehiculos.size(); i++){
+            if(Repo.SubastaRepo.subastasVehiculos.get(i).getBienSubastado().getId().equals(propiedadID)){
+                Repo.SubastaRepo.subastasVehiculos.get(i).recibirPuja(puja);
+                break;
+            }
+        }
     }
 }

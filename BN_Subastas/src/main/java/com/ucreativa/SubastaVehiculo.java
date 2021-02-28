@@ -22,8 +22,7 @@ public class SubastaVehiculo implements Subasta{
         listaDePujas = new ArrayList<>();
     }
     
-    public void recibirPuja(String usuario, boolean acuerdosFirmados, boolean asistenciaColaborador, boolean sennialTratoDepositada, double montoSennialTrato){
-        Puja puja = new Puja(usuario, bienSubastado.getId(), acuerdosFirmados, asistenciaColaborador, sennialTratoDepositada, montoSennialTrato);
+    public void recibirPuja(Puja puja){
         listaDePujas.add(puja);
     }
 
@@ -45,6 +44,6 @@ public class SubastaVehiculo implements Subasta{
     
     @Override
     public String toString(){
-        return "Subasta: Esta es la subasta del bien " + bienSubastado.getId() + ". " + bienSubastado.toString();
+        return "Subasta: Esta es la subasta del bien " + bienSubastado.getId() + ". Hay " + listaDePujas.size() + " pujas para " + bienSubastado.toString();
     }
 }

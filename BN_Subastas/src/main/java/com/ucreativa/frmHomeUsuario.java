@@ -6,6 +6,7 @@
 package com.ucreativa;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JList;
 
 /**
  *
@@ -61,6 +62,11 @@ public class frmHomeUsuario extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        lstResultadosPropiedades.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lstResultadosPropiedadesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(lstResultadosPropiedades);
 
         cmbProvincia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "San Jose", "Alajuela", "Cartago", "Heredia", "Puntarenas", "Limon" }));
@@ -105,6 +111,11 @@ public class frmHomeUsuario extends javax.swing.JFrame {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
+        });
+        lstResultadosVehiculos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lstResultadosVehiculosMouseClicked(evt);
+            }
         });
         jScrollPane2.setViewportView(lstResultadosVehiculos);
 
@@ -189,6 +200,30 @@ public class frmHomeUsuario extends javax.swing.JFrame {
     private void cmbVehiculoAnnioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbVehiculoAnnioItemStateChanged
         cargarBusquedas();
     }//GEN-LAST:event_cmbVehiculoAnnioItemStateChanged
+
+    private void lstResultadosPropiedadesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstResultadosPropiedadesMouseClicked
+        JList list = (JList)evt.getSource();
+        if (evt.getClickCount() == 2) {
+            int index = list.locationToIndex(evt.getPoint());
+
+            gestor.propiedadID = gestor.getIDPorToString(lstResultadosPropiedades.getSelectedValue());
+            Repo.UsersRepo.gestor = this.gestor;
+            frmPuja puja = new frmPuja();
+            puja.setVisible(true);
+        }
+    }//GEN-LAST:event_lstResultadosPropiedadesMouseClicked
+
+    private void lstResultadosVehiculosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstResultadosVehiculosMouseClicked
+        JList list = (JList)evt.getSource();
+        if (evt.getClickCount() == 2) {
+            int index = list.locationToIndex(evt.getPoint());
+
+            gestor.propiedadID = gestor.getIDPorToString(lstResultadosVehiculos.getSelectedValue());
+            Repo.UsersRepo.gestor = this.gestor;
+            frmPuja puja = new frmPuja();
+            puja.setVisible(true);
+        }
+    }//GEN-LAST:event_lstResultadosVehiculosMouseClicked
 
     /**
      * @param args the command line arguments
