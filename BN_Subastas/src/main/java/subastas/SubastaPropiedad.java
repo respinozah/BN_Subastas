@@ -1,5 +1,7 @@
-package com.ucreativa;
+package subastas;
 
+import bienes.Propiedad;
+import repo.Repo.SubastaRepo;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +12,7 @@ import java.util.List;
  * @author Raul Espinoza
  * @author Francisco Cambronero
  */
-public class SubastaPropiedad implements Subasta{
+public class SubastaPropiedad implements ISubasta{
     
     private Propiedad bienSubastado;
     public List<Puja> listaDePujas;
@@ -21,7 +23,7 @@ public class SubastaPropiedad implements Subasta{
     }
     
     public void subastar(){
-        Repo.SubastaRepo.subastasPropiedades.add(this);
+        SubastaRepo.getSubastasPropiedades().add(this);
     }
     
     public void recibirPuja(Puja puja){

@@ -1,7 +1,15 @@
 package com.ucreativa;
 
-import static com.ucreativa.Repo.BienRepo.propiedades;
-import static com.ucreativa.Repo.BienRepo.vehiculos;
+import usuarios.Usuario;
+import bienes.Vehiculo;
+import bienes.Propiedad;
+import subastas.Puja;
+import subastas.SubastaPropiedad;
+import subastas.SubastaVehiculo;
+import repo.Repo.UsersRepo;
+import repo.Repo.BienRepo;
+import repo.Repo.SubastaRepo;
+
 
 /**
  * Esta es la clase que actua como interfase entre la logica del sistema de subastas y los formularios de la presentacion.
@@ -19,13 +27,13 @@ public class Gestor {
         
     }
 
-    boolean login(String email, String contrasenna) {
+    public boolean login(String email, String contrasenna) {
         
         Usuario usuario;
         boolean result = false;
         
-        for(int i = 0; i < Repo.UsersRepo.usuarios.size(); i++){
-            usuario = Repo.UsersRepo.usuarios.get(i);
+        for(int i = 0; i < UsersRepo.getUsuarios().size(); i++){
+            usuario = UsersRepo.getUsuarios().get(i);
             if(usuario.authenticar(email, contrasenna)){
                 usuarioAuthenticado = usuario;
                 result = true;
@@ -48,11 +56,11 @@ public class Gestor {
     }
     
     public String[] getSubastasPropiedades(String provincia){
-        String[] resultados = new String[Repo.SubastaRepo.subastasPropiedades.size()];
+        String[] resultados = new String[SubastaRepo.getSubastasPropiedades().size()];
         int encontrados = 0;
                 
-        for(int i = 0; i < Repo.SubastaRepo.subastasPropiedades.size(); i++){
-            SubastaPropiedad subasta = Repo.SubastaRepo.subastasPropiedades.get(i);
+        for(int i = 0; i < SubastaRepo.getSubastasPropiedades().size(); i++){
+            SubastaPropiedad subasta = SubastaRepo.getSubastasPropiedades().get(i);
             if(subasta.getBienSubastado().getProvincia().equals(provincia)){
                 resultados[encontrados] = subasta.toString();
                 encontrados++;
@@ -62,12 +70,12 @@ public class Gestor {
     } 
 
     public String[] getSubastasVehiculos(String anniop){
-        String[] resultados = new String[Repo.BienRepo.vehiculos.size()];
+        String[] resultados = new String[BienRepo.getVehiculos().size()];
         int annio = Integer.parseInt(anniop);
         int encontrados = 0;
                 
-        for(int i = 0; i < Repo.SubastaRepo.subastasVehiculos.size(); i++){
-            SubastaVehiculo subasta = Repo.SubastaRepo.subastasVehiculos.get(i);
+        for(int i = 0; i < BienRepo.getVehiculos().size(); i++){
+            SubastaVehiculo subasta = SubastaRepo.getSubastasVehiculos().get(i);
             if(subasta.getBienSubastado().getAnnio() == annio){
                 resultados[encontrados] = subasta.toString();
                 encontrados++;
@@ -78,15 +86,15 @@ public class Gestor {
     
     public String getDescripcionPropiedadPorID(String id){
         String description = "";
-        for(int i = 0; i < Repo.BienRepo.propiedades.size(); i++){
-            if(Repo.BienRepo.propiedades.get(i).getId().equals(id)){
-                description = Repo.BienRepo.propiedades.get(i).toString();
+        for(int i = 0; i < BienRepo.getPropiedades().size(); i++){
+            if(BienRepo.getPropiedades().get(i).getId().equals(id)){
+                description = BienRepo.getPropiedades().get(i).toString();
                 break;
             }
         }
-        for(int i = 0; i < Repo.BienRepo.vehiculos.size(); i++){
-            if(Repo.BienRepo.vehiculos.get(i).getId().equals(id)){
-                description = Repo.BienRepo.vehiculos.get(i).toString();
+        for(int i = 0; i < BienRepo.getVehiculos().size(); i++){
+            if(BienRepo.getVehiculos().get(i).getId().equals(id)){
+                description = BienRepo.getVehiculos().get(i).toString();
                 break;
             }
         }
@@ -97,29 +105,29 @@ public class Gestor {
         return toString.substring(toString.length()-4, toString.length());
     }
 
-    void registrarPuja(String usuarioId, String propiedadID, boolean acuerdosFirmados, boolean asistenciaColaborador, boolean sennialTratoDepositada, Double montoSennialTrato) {
+    public void registrarPuja(String usuarioId, String propiedadID, boolean acuerdosFirmados, boolean asistenciaColaborador, boolean sennialTratoDepositada, Double montoSennialTrato) {
         Puja puja = new Puja(usuarioId, propiedadID, acuerdosFirmados, asistenciaColaborador,  sennialTratoDepositada, montoSennialTrato);
         
         puja.registrarPuja();
     }
 
     public String[] getPropiedades() {
-        String[] resultados = new String[Repo.BienRepo.propiedades.size()];      
-        for(int i = 0; i < Repo.BienRepo.propiedades.size(); i++){
-            resultados[i] = Repo.BienRepo.propiedades.get(i).toString();
+        String[] resultados = new String[BienRepo.getPropiedades().size()];      
+        for(int i = 0; i < BienRepo.getPropiedades().size(); i++){
+            resultados[i] = BienRepo.getPropiedades().get(i).toString();
         }
         return resultados;
     }
     public String[] getVehiculos() {
-        String[] resultados = new String[Repo.BienRepo.vehiculos.size()];      
-        for(int i = 0; i < Repo.BienRepo.vehiculos.size(); i++){
-            resultados[i] = Repo.BienRepo.vehiculos.get(i).toString();
+        String[] resultados = new String[BienRepo.getVehiculos().size()];      
+        for(int i = 0; i < BienRepo.getVehiculos().size(); i++){
+            resultados[i] = BienRepo.getVehiculos().get(i).toString();
         }
         return resultados;
     }
 
     public void registrarPropiedad(String provincia, String canton, String distrito, String tipoVenta, double tamannio, boolean estaEnCosta, boolean aceptaOfertas, boolean destacado, String estado, double precio, double descuento) {
-        int contador = Repo.BienRepo.propiedades.size();
+        int contador = BienRepo.getPropiedades().size();
         contador++;
         Propiedad propiedad = new Propiedad(provincia, canton, distrito, descuento, tipoVenta, tamannio, estaEnCosta, true, aceptaOfertas, destacado, estado, ("PRP"+contador), precio);
         propiedad.registrar();
@@ -127,8 +135,8 @@ public class Gestor {
         nuevaSubasta.subastar();
     }
 
-    void registrarVehiculo(int annio, String tipoVenta, String estado, Double precio) {
-        int contador = Repo.BienRepo.vehiculos.size();
+    public void registrarVehiculo(int annio, String tipoVenta, String estado, Double precio) {
+        int contador = BienRepo.getVehiculos().size();
         contador++;
         Vehiculo vehiculo = new Vehiculo(annio, tipoVenta, estado, ("VCL"+contador), precio);
         vehiculo.registrar();

@@ -1,5 +1,8 @@
-package com.ucreativa;
+package gui;
 
+import repo.Repo.GestorRepo;
+import repo.Repo.UsersRepo;
+import com.ucreativa.Gestor;
 import javax.swing.DefaultComboBoxModel;
 
 /**
@@ -11,7 +14,7 @@ import javax.swing.DefaultComboBoxModel;
  */
 public class frmHomeAdmin extends javax.swing.JFrame {
 
-    private Gestor gestor = Repo.UsersRepo.gestor;
+    Gestor gestor = GestorRepo.getGestor();
 
     public frmHomeAdmin() {
         initComponents();
@@ -111,7 +114,7 @@ public class frmHomeAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdRegistrarBienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdRegistrarBienActionPerformed
-        Repo.UsersRepo.gestor = this.gestor;
+        GestorRepo.setGestor(this.gestor);
         frmRegistroBien registroBien = new frmRegistroBien();
         registroBien.setVisible(true);
     }//GEN-LAST:event_cmdRegistrarBienActionPerformed

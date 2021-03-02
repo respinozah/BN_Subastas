@@ -1,5 +1,7 @@
-package com.ucreativa;
+package gui;
 
+import repo.Repo.GestorRepo;
+import com.ucreativa.Gestor;
 import javax.swing.JOptionPane;
 
 /**
@@ -11,7 +13,7 @@ import javax.swing.JOptionPane;
  */
 public class frmLogin extends javax.swing.JFrame {
 
-    Gestor gestor = Repo.UsersRepo.gestor;
+    Gestor gestor = GestorRepo.getGestor();
 
     public frmLogin() {
         initComponents();
@@ -112,7 +114,7 @@ public class frmLogin extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         if(gestor.login(txtUsuario.getText(), txtContrasenna.getText())){
-            Repo.UsersRepo.gestor = this.gestor;
+            GestorRepo.setGestor(this.gestor);
             if(gestor.esAdmin()){
                 //Abro el form de admin
                 frmHomeAdmin homeAdmin = new frmHomeAdmin();

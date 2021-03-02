@@ -1,4 +1,7 @@
-package com.ucreativa;
+package gui;
+
+import com.ucreativa.Gestor;
+import repo.Repo.GestorRepo;
 
 /**
  * Esta es la clase que implementa el formulario de registro de una propiedad o vehiculo a subastar.
@@ -9,7 +12,7 @@ package com.ucreativa;
  */
 public class frmRegistroBien extends javax.swing.JFrame {
 
-    private Gestor gestor = Repo.UsersRepo.gestor;
+    Gestor gestor = GestorRepo.getGestor();
 
     public frmRegistroBien() {
         initComponents();
@@ -203,12 +206,11 @@ public class frmRegistroBien extends javax.swing.JFrame {
                     .addComponent(chkDestacado)
                     .addComponent(cmbEstado, 0, 137, Short.MAX_VALUE)
                     .addComponent(txtPrecio)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(txtProvincia, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(cmbTipoVenta, javax.swing.GroupLayout.Alignment.LEADING, 0, 134, Short.MAX_VALUE)
-                        .addComponent(txtTamannio, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtCanton, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtDistrito, javax.swing.GroupLayout.Alignment.LEADING)))
+                    .addComponent(txtProvincia)
+                    .addComponent(cmbTipoVenta, 0, 134, Short.MAX_VALUE)
+                    .addComponent(txtTamannio)
+                    .addComponent(txtCanton)
+                    .addComponent(txtDistrito))
                 .addContainerGap(101, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(

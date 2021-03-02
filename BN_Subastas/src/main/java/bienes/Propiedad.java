@@ -1,4 +1,6 @@
-package com.ucreativa;
+package bienes;
+
+import repo.Repo.BienRepo;
 
 /**
  * Esta es la clase que define la propiedad (un bien inmueble) en el sistema de subastas.
@@ -38,7 +40,7 @@ public class Propiedad extends Bien{
 
     public boolean registrar(){
         try{
-            Repo.BienRepo.propiedades.add(this);
+            BienRepo.getPropiedades().add(this);
             return true;
         }catch(Exception e){
             return false;

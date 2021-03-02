@@ -1,4 +1,6 @@
-package com.ucreativa;
+package bienes;
+
+import repo.Repo.BienRepo;
 
 /**
  * Esta es la clase que define un vehiculo (un bien mueble) en el sistema de subastas.
@@ -22,7 +24,7 @@ public class Vehiculo extends Bien{
 
     public boolean registrar(){
         try{
-            Repo.BienRepo.vehiculos.add(this);
+            BienRepo.getVehiculos().add(this);
             return true;
         }
         catch(Exception e){

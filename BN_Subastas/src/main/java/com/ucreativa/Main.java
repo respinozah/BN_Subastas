@@ -1,5 +1,7 @@
 package com.ucreativa;
 
+import gui.frmLogin;
+
 /**
  * Esta es la clase que actua como punto de entrada al sistema.
  * 
@@ -10,11 +12,11 @@ package com.ucreativa;
 public class Main {
  
     public static void main(String[] args){
-        Repo.UsersRepo.cargarUsuarios();
-        Repo.BienRepo.cargarPropiedades();
-        Repo.BienRepo.cargarVehiculos();
-        Repo.SubastaRepo.cargarSubastasPropiedades();
-        Repo.SubastaRepo.cargarSubastasVehiculos();
+        repo.Repo.UsersRepo.cargarUsuarios();
+        repo.Repo.BienRepo.cargarPropiedades();
+        repo.Repo.BienRepo.cargarVehiculos();
+        repo.Repo.SubastaRepo.cargarSubastasPropiedades();
+        repo.Repo.SubastaRepo.cargarSubastasVehiculos();
         
         frmLogin login = new frmLogin();
         login.show();

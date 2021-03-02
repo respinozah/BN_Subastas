@@ -1,4 +1,4 @@
-package com.ucreativa;
+package bienes;
 
 /**
  * Esta es la clase abstracta que define la estructura de bienes del sistema de subastas.

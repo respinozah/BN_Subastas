@@ -1,5 +1,7 @@
-package com.ucreativa;
+package subastas;
 
+import bienes.Vehiculo;
+import repo.Repo.SubastaRepo;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +12,7 @@ import java.util.List;
  * @author Raul Espinoza
  * @author Francisco Cambronero
  */
-public class SubastaVehiculo implements Subasta{
+public class SubastaVehiculo implements ISubasta{
     
     private Vehiculo bienSubastado;
     public static List<Puja> listaDePujas;
@@ -21,7 +23,7 @@ public class SubastaVehiculo implements Subasta{
     }
     
     public void subastar(){
-        Repo.SubastaRepo.subastasVehiculos.add(this);
+        SubastaRepo.getSubastasVehiculos().add(this);
     }
     
     public void recibirPuja(Puja puja){

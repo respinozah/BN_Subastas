@@ -1,4 +1,7 @@
-package com.ucreativa;
+package gui;
+
+import com.ucreativa.Gestor;
+import repo.Repo.GestorRepo;
 
 /**
  * Esta es la clase que implementa el formulario para registrar una puja a un bien subastado.
@@ -9,7 +12,7 @@ package com.ucreativa;
  */
 public class frmPuja extends javax.swing.JFrame {
 
-    private Gestor gestor = Repo.UsersRepo.gestor;
+    Gestor gestor = GestorRepo.getGestor();
 
     public frmPuja() {
         initComponents();

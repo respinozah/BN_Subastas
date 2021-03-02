@@ -1,4 +1,5 @@
-package com.ucreativa;
+package subastas;
+import repo.Repo.SubastaRepo;
 import java.util.Random;
 
 /**
@@ -28,16 +29,16 @@ public class Puja {
     }
     
     public void registrarPuja(){
-        for(int i = 0; i < Repo.SubastaRepo.subastasPropiedades.size(); i++){
-            if(Repo.SubastaRepo.subastasPropiedades.get(i).getBienSubastado().getId().equals(bienSubastado)){
-                Repo.SubastaRepo.subastasPropiedades.get(i).recibirPuja(this);
+        for(int i = 0; i < SubastaRepo.getSubastasPropiedades().size(); i++){
+            if(SubastaRepo.getSubastasPropiedades().get(i).getBienSubastado().getId().equals(bienSubastado)){
+                SubastaRepo.getSubastasPropiedades().get(i).recibirPuja(this);
                 break;
             }
         }
         
-        for(int i = 0; i < Repo.SubastaRepo.subastasVehiculos.size(); i++){
-            if(Repo.SubastaRepo.subastasVehiculos.get(i).getBienSubastado().getId().equals(bienSubastado)){
-                Repo.SubastaRepo.subastasVehiculos.get(i).recibirPuja(this);
+        for(int i = 0; i < SubastaRepo.getSubastasVehiculos().size(); i++){
+            if(SubastaRepo.getSubastasVehiculos().get(i).getBienSubastado().getId().equals(bienSubastado)){
+                SubastaRepo.getSubastasVehiculos().get(i).recibirPuja(this);
                 break;
             }
         }

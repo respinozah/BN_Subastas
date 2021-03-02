@@ -1,5 +1,8 @@
-package com.ucreativa;
+package gui;
 
+import com.ucreativa.Gestor;
+import repo.Repo.GestorRepo;
+import repo.Repo.UsersRepo;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JList;
 
@@ -12,7 +15,7 @@ import javax.swing.JList;
  */
 public class frmHomeUsuario extends javax.swing.JFrame {
 
-    private Gestor gestor = Repo.UsersRepo.gestor;
+    Gestor gestor = GestorRepo.getGestor();
 
     public frmHomeUsuario() {
         initComponents();
@@ -202,7 +205,7 @@ public class frmHomeUsuario extends javax.swing.JFrame {
         if (evt.getClickCount() == 2) {
             int index = list.locationToIndex(evt.getPoint());
             gestor.propiedadID = gestor.getIDPorDescripcion(lstResultadosPropiedades.getSelectedValue());
-            Repo.UsersRepo.gestor = this.gestor;
+            GestorRepo.setGestor(this.gestor);
             frmPuja puja = new frmPuja();
             puja.setVisible(true);
         }
@@ -216,7 +219,7 @@ public class frmHomeUsuario extends javax.swing.JFrame {
         if (evt.getClickCount() == 2) {
             int index = list.locationToIndex(evt.getPoint());
             gestor.propiedadID = gestor.getIDPorDescripcion(lstResultadosVehiculos.getSelectedValue());
-            Repo.UsersRepo.gestor = this.gestor;
+            GestorRepo.setGestor(this.gestor);
             frmPuja puja = new frmPuja();
             puja.setVisible(true);
         }

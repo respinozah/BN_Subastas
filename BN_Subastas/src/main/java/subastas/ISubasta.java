@@ -1,9 +1,10 @@
 /*
  * 
  */
-package com.ucreativa;
+package subastas;
 
 
+import bienes.Bien;
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ import java.util.List;
  * @author Raul Espinoza
  * @author Francisco Cambronero
  */
-public interface Subasta {
+public interface ISubasta {
     public static Bien bienSubastado = null;
     public static List<Puja> listaDePujas = null;
     
