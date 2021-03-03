@@ -3,6 +3,9 @@ package com.ucreativa;
 import usuarios.Usuario;
 import bienes.Vehiculo;
 import bienes.Propiedad;
+import busquedas.Busqueda;
+import busquedas.BusquedaPropiedad;
+import busquedas.BusquedaVehiculo;
 import subastas.Puja;
 import subastas.SubastaPropiedad;
 import subastas.SubastaVehiculo;
@@ -56,32 +59,13 @@ public class Gestor {
     }
     
     public String[] getSubastasPropiedades(String provincia){
-        String[] resultados = new String[SubastaRepo.getSubastasPropiedades().size()];
-        int encontrados = 0;
-                
-        for(int i = 0; i < SubastaRepo.getSubastasPropiedades().size(); i++){
-            SubastaPropiedad subasta = SubastaRepo.getSubastasPropiedades().get(i);
-            if(subasta.getBienSubastado().getProvincia().equals(provincia)){
-                resultados[encontrados] = subasta.toString();
-                encontrados++;
-            }
-        }
-        return resultados;
+        BusquedaPropiedad busqueda = new BusquedaPropiedad();
+        return busqueda.Buscar(provincia);
     } 
 
     public String[] getSubastasVehiculos(String anniop){
-        String[] resultados = new String[BienRepo.getVehiculos().size()];
-        int annio = Integer.parseInt(anniop);
-        int encontrados = 0;
-                
-        for(int i = 0; i < BienRepo.getVehiculos().size(); i++){
-            SubastaVehiculo subasta = SubastaRepo.getSubastasVehiculos().get(i);
-            if(subasta.getBienSubastado().getAnnio() == annio){
-                resultados[encontrados] = subasta.toString();
-                encontrados++;
-            }
-        }
-        return resultados;
+        BusquedaVehiculo busqueda = new BusquedaVehiculo();
+        return busqueda.Buscar(anniop);
     }
     
     public String getDescripcionPropiedadPorID(String id){

@@ -120,11 +120,11 @@ public class frmHomeAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_cmdRegistrarBienActionPerformed
 
     private void lstPropiedadesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstPropiedadesMouseClicked
-        //cargarLIstas();
+        cargarLIstas();
     }//GEN-LAST:event_lstPropiedadesMouseClicked
 
     private void lstVehiculosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstVehiculosMouseClicked
-        //cargarLIstas();
+        cargarLIstas();
     }//GEN-LAST:event_lstVehiculosMouseClicked
 
     /**
